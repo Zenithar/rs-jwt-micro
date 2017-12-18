@@ -1,0 +1,14 @@
+[package]
+name = "rs_jwt_micro"
+version = "0.1.0"
+authors = ["Thibault Normand <me@zenithar.org>"]
+
+[dependencies]
+protobuf        = "1.*"
+futures         = "0.*"
+futures-cpupool = "0.1.*"
+tls-api         = "0.*"
+grpc            = "0.2.1"
+
+[build-dependencies]
+protoc-rust-grpc = "0.2.1"

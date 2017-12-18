@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package jwt;
+
+service Tokenizr {
+    rpc Sign(CreateTokenReq) returns (TokenRes);
+    rpc Verify(ValidationReq) returns (TokenRes);
+}
+
+// -----------------------------------------------------
+
+message Error {
+    int32 code = 1;
+    string message = 2;
+}
+
+message CreateTokenReq {
+    string issuer = 1;
+    string subject = 2;
+    string audience = 3;
+    int64 issued_at = 4;
+    int64 expires_at = 5;
+    int64 not_before = 6;
+    repeated string scopes = 7;
+    map<string, string> additionals = 8;
+}
+
+message ValidationReq {
+    string token = 1;
+}
+
+message TokenRes {
+    Error error = 1;
+    string token = 2;
+}
